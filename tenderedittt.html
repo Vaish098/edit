@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="https://ietmanager.com/static/style.css">
+    <link rel="stylesheet" href="https://ietmanager.com/static/cal.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Tender Details- IET Admin Dashboard Panel</title> 
+    <style>
+        .dash-content .title .text {
+            font-size: 24px;
+            font-weight: 500;
+           color: #1e5c7a;
+           margin-left: 10px;
+        }
+        .active
+        {
+        background-color:#E1E7A4;
+        
+        }
+        .menu-items li a i {
+            font-size: 24px;
+            min-width: 45px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e5c7a;
+        }
+        .menu-items li a .link-name {
+            font-size: 18px;
+            font-weight: 400;
+            color: #1e5c7a;
+        }
+        .nav-links li a:hover i, .nav-links li a:hover .link-name {
+           color: #3bb24f;
+        }
+        
+        .container form button,.backBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 9px 0; 
+            background-color: #4070f4;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+        .selectbox
+        {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 24px;
+            margin: 11px -80px;
+        }
+        .input-fields label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #2e2e2e;
+        }
+        .container form {
+            position: relative;
+            margin-top: 16px;
+            min-height: 700px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        
+        .container form .fieldss{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        form .fieldss .input-field {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+        
+        form .fieldss .input-fields {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+        
+
+
+</style>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="https://www.iet.com.sg/images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">TENDER DETAILS</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dahsboard</span>
+                </a></li>
+                <li><a href="{% url 'newtenderreg' %}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Add Tender</span>
+                </a></li>
+                <!--<li><a href="{% url 'documentupload' %}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Briefing</span>
+                </a></li>-->
+                <li><a href="{% url 'tenderlist' %}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Tender List</span>
+                </a></li>
+                  <li><a href="{% url 'vendorlist' %}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Vendor List</span>
+                </a></li>
+                <li><a href="{% url 'documentupload' %}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Briefing</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="link-name">Analytics</span>
+                </a></li>
+                <li><a href="{% url 'newentity' %}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Vendor</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">User</span>
+                </a></li>
+                <li><a href="{% url 'settings' %}">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="{% url 'logout' %}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+           <!-- <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>--><form action= "{% url 'listsearch' %}"method="GET" class="top-form" style="padding-bottom: 20px; padding-right: 322px;">
+                <input type="text" class="form-control" placeholder="Search here"  id="itqno" name="itqno" style=" width: 572px;height: 35px;font-size: 15px;font-weight: 400;text-align:center;outline: none;border-radius: 5px;"required>
+                  
+                    <button type="submit"  class="btn btn-primary" style="border-radius: 5px;height: 25px;">Search</button>
+                </form>
+            
+            <img src="images/profile.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Create New Tender</span>
+                </div>
+            <div class="container">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="form first">
+                        <div class="details personal">
+                          <span class="title">Tender Details</span>
+                            {% for tender in tender %}
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Tender Title</label>
+                                    <input type="text" placeholder="Enter your tender name" id="Tendername" name="Tendername" value="{{tender.Tendername}}" required>
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>Publish Date</label>
+                                    <input type="date" name="date_fieldd" value="{{ tender.date_fieldd|date:'Y-m-d' }}" required>
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>ITQ Reference</label>
+                                    <input type="text" placeholder="Enter your ITQ Ref no" name="Tenderid" value="{{ tender.Tenderid }}" required>
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>Entity Name</label>
+                                    <select name="entityname" required>
+                                        <option value="{{ tender.entityname }}">{{tender.entityname}}</option>
+                                        {% for tender in entity %}
+                                        <option value="{{ tender.entityname }}">{{tender.entityname}}</option>
+                                        {% endfor %}
+                                        <!--<option>Entity 2</option>
+                                        <option>Entity 3</option>-->
+                                    </select>
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>Category</label>
+                                    <select name="categoryname" required name="categoryname">
+                                        <option value="{{tender.categoryname}}">{{tender.categoryname}}</option>
+                                        {% for tender in cat %}
+                                        <option value="{{tender.categoryname}}">{{tender.categoryname}}</option>
+                                        {% endfor %}
+                                        <!--<option>Category 2</option>
+                                        <option>Category 3</option>-->
+                                    </select>
+                                </div>
+                                
+                                
+        
+                                <div class="input-field">
+                                    <label>Mode of Submission</label>
+                                    <select required name="modeofsubmission">
+                                        <option value="{{tender.modeofsubmission}}">{{tender.modeofsubmission}}</option>
+                                        {% for tender in modeofsubmission %}
+                                        <option value="{{tender.modeofsubmission}}">{{tender.modeofsubmission}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!--<input type="text" placeholder="Enter Mode" name="modeofsubmission" value="{{j.modeofsubmission}}" required>-->
+                                </div>
+                            </div>
+                        </div>
+        
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Closing Date</label>
+                                    <input type="date" name="date_field" value="{{ tender.date_field|date:'Y-m-d' }}" required>
+                                </div>
+                                <br>
+
+        
+                                <div class="input-field">
+                                    <label>Closing Time</label>
+                                    <input type="time" name="timess" value="{{ tender.timess|time:'H:i' }}" required>
+                                </div>
+                            
+                                <div class="input-field">
+                                    <label>Briefing Incharge</label>
+                                    <!--<input type="text" placeholder="Enter Briefing Incharge Name" name="briefingincharge" value="{{j.briefingincharge}}" required>-->
+                                    <select required name="briefingincharge">
+                                        <option value="{{j.briefingincharge}}">{{j.briefingincharge}}</option>
+                                        {% for i in briefingincharge %}
+                
